@@ -1,0 +1,66 @@
+/* DEFAULT VARIABLES */
+:root {
+  --rem: 3.5vw;
+  --row-margin: 2.5%;
+  --column-count: 12;
+  --gutter: 5px;
+
+  @media (min-width: 768px) {
+    --rem: 16px;
+    --page-margin: 20px;
+    --row-max-width: 1000px;
+    --column-count: 12;
+    --gutter: 10px;
+  }
+}
+
+/* RESET */
+html {
+  font-size: var(--rem);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* MIXINS */
+@mixin row() {
+  display: flex;
+  width: calc(100% - (var(--row-margin) * 2));
+  max-width: var(--row-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(0, 255, 0, 0.2);
+}
+
+@mixin col($n) {
+  $column-margin: calc(var(--gutter) * ((var(--column-count) - 1) / var(--column-count)));
+  $lost-margins: calc(var(--gutter) * (#{$n} - 1));
+  $column-width: calc(100% / var(--column-count) - #{$column-margin});
+  width: calc(#{$column-width} * #{$n} + #{$lost-margins});
+  background: rgba(0, 0, 255, 0.2);
+
+  &:not(:first-child) {
+    margin-left: calc(var(--gutter) / 2);
+  }
+
+  &:not(:last-child) {
+    margin-right: calc(var(--gutter) / 2);
+  }
+}
+
+/* GRID */
+[data-row] {
+  @include row();
+}
+
+[data-col] {
+  @include col(1);
+}
+
+@for $n from 1 through 24 {
+  [data-col="#{$n}"] {
+    @include col($n);
+  }
+}

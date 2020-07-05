@@ -1,8 +1,18 @@
 {
   "name": "seasalt",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "dist/index.css",
+  "scripts": {
+    "build": "sass ./src:./dist",
+    "dev": "yarn run watch & http-server -o playground/index.html",
+    "prepublish": "yarn run build",
+    "watch": "sass --watch ./src:./dist"
+  },
   "repository": "git@github.com:christinecha/seasalt.git",
   "author": "Christine Cha <hello@christinecha.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.12.3",
+    "sass": "^1.26.9"
+  }
 }
