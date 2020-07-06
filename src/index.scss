@@ -1,11 +1,29 @@
-/* DEFAULT VARIABLES */
+/* SASS VARIABLES */
+$breakpoint-tablet: 600px;
+$breakpoint-desktop: 1024px;
+
+/* DEFAULT CSS VARIABLES */
 :root {
   --rem: 3.5vw;
+  --row-height: 10px;
   --row-margin: 2.5%;
   --column-count: 12;
   --gutter: 5px;
 
-  @media (min-width: 768px) {
+  --h1-font-size: 2rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1.2rem;
+  --h4-font-size: 1.1rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    --rem: 18px;
+    --page-margin: 20px;
+    --row-max-width: 1000px;
+    --column-count: 12;
+    --gutter: 10px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
     --rem: 16px;
     --page-margin: 20px;
     --row-max-width: 1000px;
@@ -24,6 +42,10 @@ body {
   padding: 0;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
 /* MIXINS */
 @mixin row() {
   display: flex;
@@ -31,7 +53,6 @@ body {
   max-width: var(--row-max-width);
   margin-left: auto;
   margin-right: auto;
-  background: rgba(0, 255, 0, 0.2);
 }
 
 @mixin col($n) {
@@ -39,7 +60,6 @@ body {
   $lost-margins: calc(var(--gutter) * (#{$n} - 1));
   $column-width: calc(100% / var(--column-count) - #{$column-margin});
   width: calc(#{$column-width} * #{$n} + #{$lost-margins});
-  background: rgba(0, 0, 255, 0.2);
 
   &:not(:first-child) {
     margin-left: calc(var(--gutter) / 2);
@@ -50,9 +70,56 @@ body {
   }
 }
 
+@mixin h1() {
+  font-size: var(--h1-font-size);
+}
+
+@mixin h2() {
+  font-size: var(--h2-font-size);
+}
+
+@mixin h3() {
+  font-size: var(--h3-font-size);
+}
+
+@mixin h4() {
+  font-size: var(--h4-font-size);
+}
+
+@mixin show-from($n) {
+  @media (max-width: #{$n - 1}) { display: none; }
+}
+
+@mixin hide-from($n) {
+  @media (min-width: #{$n}) { display: none; }
+}
+
+@mixin show-until($n) {
+  @media (min-width: #{$n}) { display: none; }
+}
+
+@mixin hide-until($n) {
+  @media (max-width: #{$n - 1}) { display: none; }
+}
+
+@mixin show-between($from, $to) {
+  @include hide-until($from);
+  @include show-from($to);
+}
+
+@mixin hide-between($from, $to) {
+  @media (min-width: $from) and (max-width: #{$to - 1}) { display: none; }
+}
+
 /* GRID */
 [data-row] {
   @include row();
+}
+
+@for $n from 1 through 20 {
+  [data-row="#{$n}"] {
+    height: calc(#{$n} * var(--row-height));
+  }
 }
 
 [data-col] {
@@ -64,3 +131,36 @@ body {
     @include col($n);
   }
 }
+
+/* TYPOGRAPHY */
+h1, [data-h1] {
+  @include h1();
+}
+
+h2, [data-h2] {
+  @include h2();
+}
+
+h3, [data-h3] {
+  @include h3();
+}
+
+h4, [data-h4] {
+  @include h4();
+}
+
+/* VISIBILITY */
+[data-show-at="mobile"] { @include show-until($breakpoint-tablet); }
+[data-hide-at="mobile"] { @include hide-until($breakpoint-tablet); }
+
+[data-show-at="tablet"] { @include show-between($breakpoint-tablet, $breakpoint-desktop); }
+[data-hide-at="tablet"] { @include hide-between($breakpoint-tablet, $breakpoint-desktop); }
+[data-show-from="tablet"] { @include show-from($breakpoint-tablet); }
+[data-hide-from="tablet"] { @include hide-from($breakpoint-tablet); }
+[data-show-until="tablet"] { @include show-until($breakpoint-tablet); }
+[data-hide-until="tablet"] { @include hide-until($breakpoint-tablet); }
+
+[data-show-at="desktop"] { @include show-from($breakpoint-desktop); }
+[data-hide-at="desktop"] { @include hide-from($breakpoint-desktop); }
+[data-show-until="desktop"] { @include show-until($breakpoint-desktop); }
+[data-hide-until="desktop"] { @include hide-until($breakpoint-desktop); }

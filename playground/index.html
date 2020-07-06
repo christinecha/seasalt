@@ -4,12 +4,44 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../dist/index.css" rel="stylesheet" type="text/css" />
+    <link href="../dist/dev.css" rel="stylesheet" type="text/css" />
     <title></title>
   </head>
   <body>
-    <div data-row>
-      <div data-col>
+    <style>
+      h1, h2, h3, h4, h5, h6, p {
+        margin-top: 0.2em;
+        margin-bottom: 0.2em;
+        line-height: 1.4em;
+      }
+    </style>
+
+    <div data-row="2"></div>
+    <header data-row>
+      <div data-col="6" >
+        <label>Sea Salt</label>
+      </div>
+    </header>
+    <div data-row="2"></div>
+    <div data-row data-hide-until="desktop">
+      <div data-col="6" >
         <h1>Sea Salt</h1>
+        <h2>Minimal seasoning for your web application.</h2>
+        <h3>Using universal rems and CSS variables, make responsive design effortless.</h3>
+      </div>
+    </div>
+    <div data-row data-show-until="desktop">
+      <div data-col="12">
+        <h1>Sea Salt</h1>
+        <h2>Minimal seasoning for your web application.</h2>
+        <h3>Using universal rems and CSS variables, make responsive design effortless.</h3>
+      </div>
+    </div>
+    <div data-row="2"></div>
+    <div data-row>
+      <div data-col="12">
+        <h4>A simple, customizable grid.</h4>
+        <p>Using built-in CSS variables, you can adjust the grid configuration on the fly.</p>
       </div>
     </div>
     <div data-row>
@@ -31,6 +63,19 @@
       <div data-col="2">2</div>
       <div data-col="4">4</div>
       <div data-col="5">5</div>
+    </div>
+    <div data-row>
+      <div data-col="6">6</div>
+      <div data-col="2">2</div>
+      <div data-col="2">2</div>
+      <div data-col="2">2</div>
+    </div>
+    <div data-row="2"></div>
+    <div data-row>
+      <div data-col="12">
+        <h4>Relative units for smooth styling.</h4>
+        <p>Using built-in CSS variables, you can adjust the grid configuration on the fly.</p>
+      </div>
     </div>
   </body>
 </html>
