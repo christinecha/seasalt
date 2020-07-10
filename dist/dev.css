@@ -1,0 +1,33 @@
+[data-row] {
+  position: relative;
+  box-sizing: border-box;
+}
+[data-row]::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 1px dotted red;
+  margin: -1px;
+  pointer-events: none;
+}
+
+[data-col] {
+  position: relative;
+  box-sizing: border-box;
+}
+[data-col]::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 1px dotted blue;
+  margin: -1px;
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=dev.css.map */
