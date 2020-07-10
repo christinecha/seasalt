@@ -5,8 +5,8 @@ $breakpoint-desktop: 1024px;
 /* DEFAULT CSS VARIABLES */
 :root {
   --rem: 3.5vw;
-  --row-height: 10px;
-  --row-margin: 2.5%;
+  --row-height: 5px;
+  --page-margin: 2.5vw;
   --column-count: 12;
   --gutter: 5px;
 
@@ -40,6 +40,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -47,12 +48,16 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 /* MIXINS */
-@mixin row() {
-  display: flex;
-  width: calc(100% - (var(--row-margin) * 2));
+@mixin page() {
+  width: calc(100vw - (var(--page-margin) * 2));
   max-width: var(--row-max-width);
   margin-left: auto;
   margin-right: auto;
+}
+
+@mixin row() {
+  @include page();
+  display: flex;
 }
 
 @mixin col($n) {
@@ -112,6 +117,10 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 /* GRID */
+[data-page] {
+  @include page();
+}
+
 [data-row] {
   @include row();
 }

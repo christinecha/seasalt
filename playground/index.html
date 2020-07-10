@@ -9,73 +9,170 @@
   </head>
   <body>
     <style>
+      body {
+        font-family: sans-serif;
+      }
+
       h1, h2, h3, h4, h5, h6, p {
         margin-top: 0.2em;
         margin-bottom: 0.2em;
         line-height: 1.4em;
       }
+
+      code {
+        display: block;
+        padding: 10px 5px;
+        background: #222;
+        color: white;
+      }
+
+      code em {
+        opacity: 0.6;
+        display: block;
+      }
+
+      .info {
+        background: #fffbdb;
+        padding: 0 8px;
+      }
     </style>
 
-    <div data-row="2"></div>
-    <header data-row>
-      <div data-col="6" >
-        <label>Sea Salt</label>
+    <div data-row="4"></div>
+    <header data-page>
+      <div data-row>
+        <div data-col="6" >
+          <label>Sea Salt</label>
+        </div>
       </div>
     </header>
-    <div data-row="2"></div>
-    <div data-row data-hide-until="desktop">
-      <div data-col="6" >
-        <h1>Sea Salt</h1>
-        <h2>Minimal seasoning for your web application.</h2>
-        <h3>Using universal rems and CSS variables, make responsive design effortless.</h3>
+    <div data-row="4"></div>
+
+    <main data-page>
+      <div data-row data-hide-until="desktop">
+        <div data-col="7">
+          <h1>Sea Salt</h1>
+          <h2>Minimal seasoning for your web application.</h2>
+          <h3>Grid-based layout and scaleable typography for effortless responsive design.</h3>
+        </div>
       </div>
-    </div>
-    <div data-row data-show-until="desktop">
-      <div data-col="12">
-        <h1>Sea Salt</h1>
-        <h2>Minimal seasoning for your web application.</h2>
-        <h3>Using universal rems and CSS variables, make responsive design effortless.</h3>
+      <div data-row data-show-until="desktop">
+        <div data-col="12">
+          <h1>Sea Salt</h1>
+          <h2>Minimal seasoning for your web application.</h2>
+          <h3>Grid-based layout and scaleable typography for effortless responsive design.</h3>
+        </div>
       </div>
-    </div>
-    <div data-row="2"></div>
-    <div data-row>
-      <div data-col="12">
-        <h4>A simple, customizable grid.</h4>
-        <p>Using built-in CSS variables, you can adjust the grid configuration on the fly.</p>
+      <div data-row="4"></div>
+      <div data-row>
+        <div data-col="12">
+          <h2>Basic Installation</h2>
+          <code>
+            <em>// install the package</em>
+            $ yarn add seasalt<br /><br />
+            <em>// import via Webpack in your JS</em>
+            import 'seasalt/dist/index.css'<br/><br/>
+            <em>// import via Sass or Less</em>
+            @import 'node_modules/seasalt/dist/index'<br /><br />
+            <em>// or just load up directly into your HTML</em>
+            &lt;link href="node_modules/seasalt/dist/index.css" rel="stylesheet" type="text/css" /&gt;
+          </code><br />
+        </div>
       </div>
-    </div>
-    <div data-row>
-      <div data-col>1</div>
-      <div data-col>1</div>
-      <div data-col>1</div>
-      <div data-col>1</div>
-      <div data-col>1</div>
-      <div data-col>1</div>
-      <div data-col>1</div>
-      <div data-col>1</div>
-      <div data-col>1</div>
-      <div data-col>1</div>
-      <div data-col>1</div>
-      <div data-col>1</div>
-    </div>
-    <div data-row>
-      <div data-col="1">1</div>
-      <div data-col="2">2</div>
-      <div data-col="4">4</div>
-      <div data-col="5">5</div>
-    </div>
-    <div data-row>
-      <div data-col="6">6</div>
-      <div data-col="2">2</div>
-      <div data-col="2">2</div>
-      <div data-col="2">2</div>
-    </div>
-    <div data-row="2"></div>
-    <div data-row>
-      <div data-col="12">
-        <h4>Relative units for smooth styling.</h4>
-        <p>Using built-in CSS variables, you can adjust the grid configuration on the fly.</p>
+      <div data-row="4"></div>
+      <div data-row>
+        <div data-col="12">
+          <h4>A simple, customizable grid.</h4>
+          <p>Using built-in CSS variables, you can adjust the grid configuration on the fly.</p>
+        </div>
       </div>
-    </div>
+      <div data-row>
+        <div data-col>1</div>
+        <div data-col>1</div>
+        <div data-col>1</div>
+        <div data-col>1</div>
+        <div data-col>1</div>
+        <div data-col>1</div>
+        <div data-col>1</div>
+        <div data-col>1</div>
+        <div data-col>1</div>
+        <div data-col>1</div>
+        <div data-col>1</div>
+        <div data-col>1</div>
+      </div>
+      <div data-row>
+        <div data-col="1">1</div>
+        <div data-col="2">2</div>
+        <div data-col="4">4</div>
+        <div data-col="5">
+          <label>Rows have static width for easy nesting.</label>
+          <div data-row>
+            <div data-col="1">1</div>
+            <div data-col="1">1</div>
+            <div data-col="3">
+              <label>No math required.</label>
+              <div data-row>
+                <div data-col="1">1</div>
+                <div data-col="1">1</div>
+                <div data-col="1">1</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-row>
+        <div data-col="6">6</div>
+        <div data-col="2">2</div>
+        <div data-col="2">2</div>
+        <div data-col="2">2</div>
+      </div>
+      <div data-row="4"></div>
+
+      <div data-row>
+        <div data-col="7">
+          <h4>No more complicated classes.</h4>
+          <p>Use attributes like [data-row="1"] and [data-col="1"] to set sizes. No more class conflicts! Plus, it's super clean to use whether you're writing plain HTML or JSX.</p>
+        </div>
+      </div>
+      <div data-row="4"></div>
+
+      <div data-row>
+        <div data-col="12">
+          <h4>Relative units for smooth styling.</h4>
+          <p>Bye, breakpoint hell! Unification makes scaling a breeze.</p>
+          <div data-row="1"></div>
+          <div data-row>
+            <div data-col="5">
+              <div data-row="2"></div>
+              <label>All you need to do is update a single CSS variable (--rem) to scale your entire design. Try it out:</label>
+              <div data-row="1"></div>
+              <button onclick="toggleRem()">default</button>
+              <div data-row="1"></div>
+              <button onclick="toggleRem('2vw')">--rem: 2vw;</button>
+              <div data-row="1"></div>
+              <button onclick="toggleRem('16px')">--rem: 16px;</button>
+            </div>
+            <div data-col="7" class="info">
+              <h4>How does this work?</h4>
+              <p>This --rem value is used to set the `font-size` property of the HTML element. By doing that, we are also setting the value of `1rem` throughout the document. Then, if we use `rem` as our unit across the board (instead of px, for instance),  all those values will be relative to one another.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-row="20"></div>
+
+
+
+    </main>
+
+    <script>
+      function toggleRem(val) {
+        if (!val) {
+          document.documentElement.style.removeProperty('font-size')
+        } else {
+          document.documentElement.style.fontSize = val
+        }
+      }
+    </script>
   </body>
 </html>
